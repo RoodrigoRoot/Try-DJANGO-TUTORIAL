@@ -4,17 +4,13 @@
 {% endblock %}
 
 {% block content %}
-{{title}}
-{{request.user}}
-{{request.path}}
-{{user}}
-{{user.is_authenticated}}
+<h1>{{title}}</h1>
 
  {% if user.is_authenticated %}
     <h1>User Only Data</h1>
-    <ul></ul>
-    {% for item in my_list %}
-        <li>{{item}}</li>
+    <ul>
+    {% for item in blog_list %}
+        {% include 'blog/list-inline.html' with blog_post=item truncate=True detail=False %}
     {% endfor %}
 </ul>
 {% endif %}
